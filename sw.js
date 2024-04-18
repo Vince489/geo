@@ -3,18 +3,29 @@ const CACHE_NAME = 'offline';
 const OFFLINE_URL = '/index.html'; // Use absolute URLs
 
 self.addEventListener('install', event => {
-  event.waitUntil((async () => {
-    const cache = await caches.open(CACHE_NAME);
-    await cache.addAll([
-      '/',
-      '/index.html',
-      '/styles.css',
-      '/192.png',
-      '/512.png'
-    ]);
-    await cache.add(new Request(OFFLINE_URL, { cache: 'reload' }));
-  })());
-});
+
+//   event.waitUntil((async () => {
+//     const cache = await caches.open(CACHE_NAME);
+//     await cache.addAll([
+//       'index.html',
+//       'styles.css',
+//       '192.png',
+//       '512.png'
+//     ]);
+//     await cache.add(new Request(OFFLINE_URL, { cache: 'reload' }));
+//   })());
+// });
+
+  event.waitUntil(
+    caches
+    .open(cacheName)
+    .then(cache => {
+      console.log('Service Worker: Caching Files')
+      cache.addAll(cachedAssets)
+    })
+    .then(() => self.skipWaiting())
+  )
+})
 
 self.addEventListener('activate', event => {
   event.waitUntil((async () => {
