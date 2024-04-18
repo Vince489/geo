@@ -1,20 +1,15 @@
 const OFFLINE_VERSION = 1;
-const CACHE_NAME = 'offline';
+const cacheName = 'offline';
 const OFFLINE_URL = '/index.html'; // Use absolute URLs
 
-self.addEventListener('install', event => {
+const cachedAssets = [
+  './index.js',
+  './styles.css',
+  './192.webp',
+  './512.png'
+]
 
-//   event.waitUntil((async () => {
-//     const cache = await caches.open(CACHE_NAME);
-//     await cache.addAll([
-//       'index.html',
-//       'styles.css',
-//       '192.png',
-//       '512.png'
-//     ]);
-//     await cache.add(new Request(OFFLINE_URL, { cache: 'reload' }));
-//   })());
-// });
+self.addEventListener('install', event => {
 
   event.waitUntil(
     caches
