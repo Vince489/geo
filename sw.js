@@ -37,6 +37,8 @@ self.addEventListener('activate', event => {
 
 });
 
+let insideGeofence = false;
+
 self.addEventListener('fetch', event => {
   console.log('Service Worker: Fetching');
   const request = event.request;
