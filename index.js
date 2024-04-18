@@ -14,13 +14,23 @@ if ('geolocation' in navigator) {
   const geofences = [
       {
           center: { latitude: 28.610254, longitude: -81.430840 }, // Orlando, FL
-          radius: 100 // 100 meters 
+          radius: 300 // 300 meters 
       },
       {
           center: { latitude: 34.052235, longitude: -118.243683 }, // Los Angeles, CA
-          radius: 200 // 200 meters 
+          radius: 300 // 300 meters 
       },
+      {
+          center: { latitude: 28.600453, longitude: -82.122522 }, // Ocala, FL
+          radius: 300 // 300 meters
+      },
+      {
+          center: { latitude: 25.761680, longitude: -81.436783 }, // Rosemont, FL
+          radius: 300 // 300 meters
+      }
       // Add more geofences as needed
+       
+       
   ];
 
   // Request location permission
