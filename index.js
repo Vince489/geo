@@ -17,7 +17,7 @@ if ('geolocation' in navigator) {
           radius: 300 // 300 meters 
       },
       {
-          center: { latitude: 34.052235, longitude: -118.243683 }, // Los Angeles, CA
+          center: { latitude: 29.196925,  longitude: -82.140385 }, // Brothers, FL
           radius: 300 // 300 meters 
       },
       {
