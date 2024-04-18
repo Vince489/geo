@@ -10,10 +10,7 @@ self.addEventListener('install', event => {
       '/index.html',
       '/styles.css',
       '/192.png',
-      '/512.png',
-      '/index.js',
-      '/manifest.json',
-      '/sw.js'
+      '/512.png'
     ]);
     await cache.add(new Request(OFFLINE_URL, { cache: 'reload' }));
   })());
