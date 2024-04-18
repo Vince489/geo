@@ -11,7 +11,7 @@ if ('geolocation' in navigator) {
           // Define geofence parameters (e.g., latitude, longitude, radius)
           const geofence = {
               center: { latitude: 28.610254, longitude: -81.430840 }, // Orlando, FL
-              radius: 20 // 20 meters 
+              radius: 100 // 20 meters 
           };
 
           // Monitor geofence events
