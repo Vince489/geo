@@ -1,7 +1,5 @@
 const OFFLINE_VERSION = 1;
 const cacheName = 'offline';
-const OFFLINE_URL = '/index.html'; // Use absolute URLs
-
 const cachedAssets = [
   './index.js',
   './styles.css',
@@ -40,9 +38,34 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-  console.log('Service Worker: Fetching')
+  console.log('Service Worker: Fetching');
   event.respondWith(
-    fetch(event.request)
-    .catch(() => caches.match(event.request))
-  )
+    caches.match(event.request)
+      .then(cachedResponse => {
+        if (cachedResponse) {
+          // If a cached response is found, return it
+          console.log('Service Worker: Cached response found');
+          return cachedResponse;
+        }
+
+        // If no cached response is found, fetch from the network
+        console.log('Service Worker: Fetching from network');
+        return fetch(event.request)
+          .then(networkResponse => {
+            // Cache the fetched response
+            const clonedResponse = networkResponse.clone();
+            caches.open(cacheName)
+              .then(cache => {
+                cache.put(event.request, clonedResponse);
+              });
+            return networkResponse;
+          })
+          .catch(() => {
+            // If fetching from the network fails, return a fallback response
+            console.log('Service Worker: Fetch failed; serving offline fallback');
+            return caches.match(OFFLINE_URL);
+          });
+      })
+  );
 });
+
