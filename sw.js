@@ -8,7 +8,6 @@ self.addEventListener('install', event => {
     await cache.addAll([
       '/',
       '/index.html',
-      '/app.js',
       '/styles.css',
       '/192.png',
       '/512.png',
