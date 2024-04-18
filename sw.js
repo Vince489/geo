@@ -1,18 +1,17 @@
 const OFFLINE_VERSION = 1;
 const CACHE_NAME = 'offline';
-const OFFLINE_URL = 'index.html';
-
+const OFFLINE_URL = '/index.html'
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE_NAME);
     await cache.addAll([
       '/',
       '/index.html',
-      '/src/app.js',
-      '/src/styles.css',
-      '/images/192.png',
-      '/images/512.png',
-      '/src/index.js',
+      '/app.js',
+      '/styles.css',
+      '/192.png',
+      '/512.png',
+      '/index.js',
       '/manifest.json',
       '/sw.js'
     ]);
