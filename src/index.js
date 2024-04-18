@@ -8,4 +8,4 @@ if ("serviceWorker" in navigator) {
   console.log("Service Worker is not supported by this browser.");
 }
 
-console.log("Hello, World!");
+console.log("Hello, World!"); 
